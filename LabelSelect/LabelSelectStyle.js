@@ -43,7 +43,8 @@ export default StyleSheet.create({
   labelText: {
     padding: 6,
     fontSize: 14,
-    lineHeight: 14
+    lineHeight: 14,
+    maxWidth: 300
   },
   closeContainer: {
     padding: 8,
@@ -86,19 +87,19 @@ export default StyleSheet.create({
     height: height * 0.6 - 80
   },
   buttonView: {
-    height: 40,
-    backgroundColor: Color.main,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
   modalButton: {
+    height: 40,
     width: width * 0.3,
     paddingLeft: 20,
     paddingRight: 20,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: Color.main
   },
   modalItem: {
     height: 50,
@@ -110,7 +111,8 @@ export default StyleSheet.create({
     borderBottomColor: '#bbb'
   },
   modalText: {
-    fontSize: 16
+    fontSize: 16,
+    width: width * 0.6 - 70
   },
   buttonText: {
     color: '#fff',

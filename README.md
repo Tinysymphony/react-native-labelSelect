@@ -26,7 +26,7 @@ import LabelSelect from 'react-native-label-select';
   style={yourStyle}
   onConfirm={(list) => {...}}>
 
-  <LableSelect.Label
+  <LabelSelect.Label
     key={...}
     data={itemA}
     onCancel={func}>selected ItemA</LabelSelect.Label>
@@ -49,7 +49,9 @@ import LabelSelect from 'react-native-label-select';
 | enable | true | bool | is the component interactive  |
 | enableAddBtn | true | bool | whether to show the add button |
 | onConfirm | - | function | Triggered when the confirm button of modal is pressed with the newly selected items list passed as the only argument |
-
+| confirmText | - | string | Text of confirm button. |
+| cancelText | - | string | Text of cancelText button. |
+| customStyle | - | object | You can customize styles of `modal` / `buttonView` / `confirmButton` / `confirmText` / `cancelButton` / `cancelText` by `customStyle. |
 
 **LabelSelect.Label**
 
@@ -57,7 +59,8 @@ import LabelSelect from 'react-native-label-select';
 | Prop | Default | Type | Description |
 | --- | --- | --- | --- |
 | onCancel | - | function | Triggered when the close button of Label is pressed. |
-|data| -| any | Data that bind to the Label |
+| data | - | any | Data that bind to the Label |
+| customStyle | - | object | You can customize styles of `text` by `customStyle. |
 
 **LabelSelect.ModalItem**
 
@@ -76,11 +79,12 @@ import LabelSelect from 'react-native-label-select';
 | --- | --- | --- |
 | openModal | - | Open select modal |
 | cancelSelect | - | Close select modal. Also triggered when the cancel button of modal being pressed. |
+| customStyle | - | object | You can customize styles of `modalText` / `outerCircle` / `innerCircle` by `customStyle. |
 
 Use `ref` property as a hook to invoke internal methods.
 
 ```html
-<LabelSelect ref="select">...</LableSelect>
+<LabelSelect ref="select">...</LabelSelect>
 ```
 
 ```js
