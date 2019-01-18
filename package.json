@@ -44,7 +44,8 @@
 		"react-addons-test-utils": "^15.4.2",
 		"react-dom": "^15.4.2",
 		"react-native": "^0.40.0",
-		"react-test-renderer": "^15.4.2"
+		"react-test-renderer": "^15.4.2",
+		"prop-types": "^15.6.2"
 	},
 	"jest": {
 		"preset": "react-native",
