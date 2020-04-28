@@ -18,21 +18,13 @@ import LabelSelect from 'react-native-label-select';
 
 ```html
 <LabelSelect
-  ref="labelSelect"
   title="Make Choices"
-  enable={true}
   readOnly={false}
-  enableAddBtn={true}
-  style={yourStyle}
-  onConfirm={(list) => {...}}>
-
-  <LabelSelect.Label
-    key={...}
-    data={itemA}
-    onCancel={func}>selected ItemA</LabelSelect.Label>
-  <LabelSelect.ModalItem
-    key={...}
-    data={itemB}>Item B</LabelSelect.ModalItem>
+  onCancelItem={() =. setSelectedLanguages(list.filter(item=item))}
+  onConfirm={(list: any) =. setSelectedLanguages(list) }
+  selectedOptions={[ "your-selected-list" ]}
+  options={  [ "your-list" ]  }
+  >
 </LabelSelect>
 
 ```
