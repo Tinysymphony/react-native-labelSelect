@@ -1,30 +1,10 @@
-import 'react-native';
-import React from 'react';
-import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
-
 import LabelSelect from '../LabelSelect';
-
 import mock from './__mock__/mock';
 
-const {Label, ModalItem} = LabelSelect;
+let selectedItems = mock.selectedList;
 
-let selectedItems = mock.selectedList.map((item, index) =>
-  <Label
-    key={'label-' + index}
-    data={item}
-    onCancel={() => {mock.selectedList.splice(index);}}>
-    {item.text}
-  </Label>
-);
-
-let otherItems = mock.list.map((item, index) =>
-  <ModalItem
-    key={'modal-item-' + index}
-    data={item}>
-    {item.text}
-  </ModalItem>
-);
+let otherItems = mock.list;
 
 // snapshot test
 
@@ -33,9 +13,8 @@ it('renders enabled LabelSelect', () => {
     <LabelSelect
       title="Test1"
       onConfirm={() => {}}
-      >
-      {selectedItems}
-      {otherItems}
+      selectedOptions={selectedItems}
+      options={otherItems}>
     </LabelSelect>
   ).toJSON();
   expect(tree).toMatchSnapshot();
@@ -47,9 +26,8 @@ it('renders readOnly LabelSelect', () => {
       readOnly={true}
       title="Test2"
       onConfirm={() => {}}
-      >
-      {selectedItems}
-      {otherItems}
+      selectedOptions={selectedItems}
+      options={otherItems}>
     </LabelSelect>
   ).toJSON();
   expect(tree).toMatchSnapshot();
@@ -61,22 +39,12 @@ it('renders disabled LabelSelect', () => {
       enable={false}
       title="Test3"
       onConfirm={() => {}}
-      >
-      {selectedItems}
-      {otherItems}
+      selectedOptions={selectedItems}
+      options={otherItems}>
     </LabelSelect>
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });
-
-it('renders a modal item', () => {
-  let item = mock.list[0];
-  expect(renderer.create(
-    <ModalItem data={item}>{item.text}</ModalItem>
-  )).toMatchSnapshot();
-});
-
-// enzyme test
 
 it('interact with modal', () => {
   let arr = [];
@@ -85,10 +53,8 @@ it('interact with modal', () => {
     <LabelSelect
       title="Enzyme Test"
       onConfirm={(list) => {arr = list;}}
-      enableAddBtn={true}
-      >
-      {selectedItems}
-      {otherItems}
+      selectedOptions={selectedItems}
+      options={otherItems}>
     </LabelSelect>
   );
   let select = tree.instance();
@@ -104,20 +70,4 @@ it('interact with modal', () => {
   select.cancelSelect();
   expect(tree.state('isModalVisible')).toEqual(false);
   select.confirmSelect();
-});
-
-it('selecte a item', () => {
-  let data = mock.list[0];
-  let result;
-  const tree = shallow(
-    <ModalItem
-      data={data}
-      toggleSelect={(item) => {result = item;}}
-      >
-      {data.text}
-    </ModalItem>
-  );
-  let instance = tree.instance();
-  instance._toggleSelect();
-  expect(result).toEqual(data);
 });
